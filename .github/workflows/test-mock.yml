@@ -1,20 +1,25 @@
-name: 1 - test mock back
+name: 1 - 📜 test mock back
 
 on:
     push:
         branches: ["1-mock-livres"]
 
+defaults:
+    run:
+        working-directory: backend
+
 jobs:
     test:
-        name: Test
-        runs-on: ubuntu-lateest
+        name: 🔧Test
+        runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout repo
+            - name: 🤩 Checkout repo
               uses: actions/checkout@v3
+            
+            - name: 🙄 Installation des dépendances
+              working-directory: backend
+              run: npm install
 
-            #Install dependscies
-            - name:  Installation des dependences
-              run: | 
-                cd backend
-                npm install
+            - name: 😎 Lancement des tests backend
+              run: npm run test:ci
